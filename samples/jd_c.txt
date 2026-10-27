@@ -1,0 +1,4 @@
+Company: Synthetic Practice Co
+Role: Cloud Trainee
+Required: Python and SQL
+Preferred: AWS or GCP

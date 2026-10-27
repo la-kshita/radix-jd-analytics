@@ -163,4 +163,61 @@ def test_mocked_groq_response_returns_needs_review_with_server_ids(monkeypatch):
     assert captured["body"]["model"] == "openai/gpt-oss-20b"
     assert captured["body"]["response_format"]["type"] == "json_schema"
     assert captured["body"]["response_format"]["json_schema"]["strict"] is True
+    system_prompt = captured["body"]["messages"][0]["content"]
+    assert "programming languages such as Python map to COD" in system_prompt
+    assert "SWE is for software engineering practices" in system_prompt
+    assert "unfamiliar or ambiguous skills" in system_prompt
+    assert "confidence 'low' and claim_status 'needs_review'" in system_prompt
+    assert "use OTHER if no category fits clearly" in system_prompt
+    assert "skill_names must be copied exactly from skill_name fields" in system_prompt
     assert captured["timeout"] <= 45
+
+
+def test_unknown_requirement_skill_name_reports_safe_provider_error(monkeypatch):
+    monkeypatch.setenv("GROQ_API_KEY", "test-only-not-a-real-key")
+
+    import backend.extractor as extractor
+
+    proposal = extractor.Proposal(
+        company="Synthetic Practice Co",
+        role="Data Engineer",
+        name="",
+        email="",
+        skills=[
+            extractor.ProposedSkill(
+                skill_name="Polars",
+                category_code="OTHER",
+                evidence="Required: Polars",
+                confidence="low",
+                source_page=None,
+                claim_status="needs_review",
+            )
+        ],
+        requirement_groups=[
+            extractor.ProposedRequirement(
+                skill_names=["Polars DataFrame"],
+                operator="AND",
+                requirement_type="mandatory",
+                evidence="Required: Polars",
+            )
+        ],
+        education=[],
+        projects=[],
+        experience=[],
+        internships=[],
+        hackathons=[],
+        certifications=[],
+        achievements=[],
+    )
+    monkeypatch.setattr(extractor, "_load_proposal", lambda **kwargs: proposal)
+
+    with pytest.raises(HTTPException) as error:
+        extractor.extract_document(
+            source_type="jd",
+            source_file="synthetic_jd.txt",
+            source_text="Required: Polars",
+            consent=True,
+        )
+
+    assert error.value.status_code == 502
+    assert "Polars DataFrame" in error.value.detail

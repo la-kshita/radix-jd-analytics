@@ -1,0 +1,4 @@
+Company: Synthetic Practice Co
+Role: Data Trainee
+Required: SQL
+Preferred: Python

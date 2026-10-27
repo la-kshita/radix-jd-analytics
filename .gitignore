@@ -19,3 +19,9 @@ npm-debug.log*
 
 # Local editor settings
 .vscode/
+
+# Local render and scratch files
+/tmp/
+
+# Personal test document; keep local and out of handoff/commits
+/samples/jd_a-Lakshita.pdf
