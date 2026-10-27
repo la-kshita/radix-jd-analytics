@@ -10,8 +10,9 @@ Updated: 2026-10-27. This is a local handoff record based on outputs and browser
 | Backend suite rerun during handoff preparation | This environment reached the first API TestClient test after 13 earlier tests passed, then stopped making progress. The isolated API TestClient test also did not finish; both runs were interrupted. | Pending here; not a test failure, but current rerun could not be verified |
 | Frontend production build | User reported Vite build succeeded; 17 modules transformed. | Passed (reported) |
 | Frontend build rerun during handoff preparation | `npm.cmd run build` completed successfully; 17 modules transformed. | Passed (verified) |
+| GitHub push | Local commit `d6aea04739876ae5c555bbf9ad1f2faac2fa2782` was pushed to `origin/master`; `git ls-remote` returned the same commit SHA. | Passed (verified) |
 | TEAM-V1 expected JSON syntax | `samples/jd_reviewed.json` parses as JSON. | Passed (verified) |
-| Fresh-checkout reproducibility | Not run from a clean clone. | Pending; GitHub/clone work was explicitly excluded |
+| Fresh-checkout reproducibility | Not run from a clean clone. | Pending |
 
 ## Functional acceptance
 
@@ -35,4 +36,4 @@ Updated: 2026-10-27. This is a local handoff record based on outputs and browser
 - The live unfamiliar-skill scenario is not accepted yet; the latest attempt failed while mapping requirement group skill names to IDs. Do not describe this behavior as verified.
 - The README and pinned Python requirements are now present. Clean-copy verification and screenshot files remain pending.
 - The frontend production build succeeded during handoff preparation. The 390 px viewport and keyboard pass was completed after the text-size change.
-- The app is local-only, has in-memory storage, and does not implement OCR or broader RADIX integration. The user explicitly deferred GitHub and integration.
+- The app has in-memory storage and does not implement OCR or broader RADIX integration. The GitHub repository exists and the current branch is pushed, but collaborator access and a clean-clone verification remain pending.

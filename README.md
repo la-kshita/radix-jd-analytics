@@ -15,7 +15,7 @@ See [`docs/acceptance-record.md`](docs/acceptance-record.md) for the observed re
 
 ## Scope and limitations
 
-- This is a standalone local module. It is not connected to the main RADIX application and has no configured Git remote.
+- This is a standalone local module. It is not connected to the main RADIX application. The Git remote is `https://github.com/la-kshita/radix-jd-analytics.git`; the current `master` branch has been pushed.
 - Extracted records are kept in backend memory only. Restarting the backend clears them; there is no database or durable storage.
 - Scanned/image-only PDFs are unsupported; the reader needs selectable text. OCR is not included.
 - The live unfamiliar-skill Groq case has not passed after the requirement-to-skill mapping fix. Its mocked regression test is present, but live semantic acceptance remains pending.
@@ -138,6 +138,6 @@ Before sharing a tested snapshot:
 2. Run the setup, backend tests, and frontend build above from a clean copy. Record the actual output in the acceptance record.
 3. Add safe screenshots of a successful fictional-data review/export and an error-recovery case if image evidence is needed. Do not use personal data or show `.env`.
 4. Keep `.env`, `.venv/`, `frontend/node_modules/`, `frontend/dist/`, `samples/jd_a-Lakshita.pdf`, and `tmp/` out of the handoff.
-5. GitHub sharing and adding the Scrum Master as a collaborator are not done; they were deferred. This project currently has no remote. Do not call it integrated with RADIX until the separate adapter and integration checks are completed.
+5. The GitHub repository and initial push are complete. Add the Scrum Master and other teammates as collaborators through GitHub before they try to clone it; collaborator access has not been configured here. Do not call it integrated with RADIX until the separate adapter and integration checks are completed.
 
 The current acceptance record lists the remaining live Groq check, screenshot evidence, fresh-copy verification, and sharing steps. The larger RADIX integration is outside this module's standalone build.
