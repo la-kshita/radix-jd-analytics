@@ -1,0 +1,62 @@
+{
+  "schema_version": "TEAM-V1",
+  "id": "jd-1",
+  "revision": 1,
+  "source_type": "jd",
+  "source_file": "jd_a.docx",
+  "source_text": "Company: Synthetic Practice Co\nRole: Junior Developer\nRequired: Python\nPreferred: SQL",
+  "company": "Synthetic Practice Co",
+  "role": "Junior Developer",
+  "name": "",
+  "email": "",
+  "skills": [
+    {
+      "skill_id": "jd-python",
+      "skill_name": "Python",
+      "category_code": "COD",
+      "evidence": "Required: Python",
+      "confidence": "medium",
+      "source_type": "document",
+      "source_id": "jd-1",
+      "source_page": null,
+      "claim_status": "claimed"
+    },
+    {
+      "skill_id": "jd-sql",
+      "skill_name": "SQL",
+      "category_code": "SQL",
+      "evidence": "Preferred: SQL",
+      "confidence": "medium",
+      "source_type": "document",
+      "source_id": "jd-1",
+      "source_page": null,
+      "claim_status": "claimed"
+    }
+  ],
+  "requirement_groups": [
+    {
+      "requirement_id": "req-1",
+      "skill_ids": ["jd-python"],
+      "operator": "AND",
+      "requirement_type": "mandatory",
+      "evidence": "Required: Python"
+    },
+    {
+      "requirement_id": "req-2",
+      "skill_ids": ["jd-sql"],
+      "operator": "AND",
+      "requirement_type": "preferred",
+      "evidence": "Preferred: SQL"
+    }
+  ],
+  "education": [],
+  "projects": [],
+  "experience": [],
+  "internships": [],
+  "hackathons": [],
+  "certifications": [],
+  "achievements": [],
+  "review_status": "reviewed",
+  "extraction_method": "manual",
+  "warnings": ["Fictional expected fixture; not a live Groq result."]
+}

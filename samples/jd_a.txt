@@ -1,0 +1,4 @@
+Company: Synthetic Practice Co
+Role: Junior Developer
+Required: Python
+Preferred: SQL
